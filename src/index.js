@@ -8,6 +8,9 @@ import {RouterProvider} from "react-router";
 import About from "./pages/About";
 import Posts from "./pages/Posts";
 import Post from "./pages/Post";
+import {Provider} from "react-redux";
+import store from "./store/store";
+import UserPage from "./pages/UserPage";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: '/post/:id',
                 element: <Post/>
+            },
+            {
+                path: '/users',
+                element: <UserPage/>
             }
         ]
     }
@@ -37,6 +44,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-      <RouterProvider router={router}/>
+      <Provider store={store}>
+          <RouterProvider router={router}/>
+      </Provider>
   </React.StrictMode>
 );
